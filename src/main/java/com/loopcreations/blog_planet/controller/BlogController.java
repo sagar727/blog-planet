@@ -4,6 +4,7 @@ package com.loopcreations.blog_planet.controller;
 import com.loopcreations.blog_planet.model.Blog;
 import com.loopcreations.blog_planet.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,8 +20,9 @@ public class BlogController {
     private BlogService blogService;
 
     @GetMapping
-    public List<Blog> getBlogs(){
-        return blogService.getBlogs();
+    public ResponseEntity<List<Blog>> getBlogs(){
+        List<Blog> blogs = blogService.getBlogs();
+        return new ResponseEntity<>(blogs, HttpStatus.OK);
     }
 
     @GetMapping("id/{blogId}")

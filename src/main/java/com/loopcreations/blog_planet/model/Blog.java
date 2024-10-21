@@ -18,10 +18,13 @@ public class Blog {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "blogTitle", nullable = false, length = 200)
     private String blogTitle;
 
+    @Column(name = "blogDetails", nullable = false, length = 1000)
     private String blogDetails;
 
+    @Column(name = "topic", nullable = false)
     private String topic;
 
     private String authorName;
